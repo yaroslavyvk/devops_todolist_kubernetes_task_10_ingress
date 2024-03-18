@@ -61,7 +61,7 @@ WSGI_APPLICATION = "todolist.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DB_NAME_KEY = os.environ.get("DB_NAME", "")
+DB_NAME = os.environ.get("DB_NAME", "")
 DB_USER = os.environ.get("DB_USER", "")
 DB_PASSWORD = os.environ.get("DB_PASSWORD", "")
 DB_HOST = os.environ.get("DB_HOST", "")
@@ -69,7 +69,7 @@ DB_HOST = os.environ.get("DB_HOST", "")
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': DB_NAME_KEY,
+        'NAME': DB_NAME,
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
         'HOST': DB_HOST,  # You can use a different host if your MySQL server is on a remote machine.
