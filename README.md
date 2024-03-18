@@ -33,11 +33,11 @@ Create a kubernetes manifest for a pod which will containa ToDo app container:
 
 1. Fork this repository.
 1. Use `kind` to spin up a cluster from a `cluster.yml` configuration file.
-1. Create a `statefulSet.yml` file for `StatefulSet` to manage MySQL.
-1. `StatefulSet` requirement:
-    1. `StatefulSet` should be deployed in a `mysql` namespace
-    1. `StatefulSet` should have 3 replicas
-    3. `StatefulSet` is reading sensetive data from a secret:
+1. Create a `ingress.yml` file for `Ingress` to manage ingress traffic.
+1. `Ingress` requirement:
+    1. `Ingress` file should be located in `./infrastructure/ingress` directory
+    1. `Ingress` should have 3 replicas
+    3. `Ingress` is reading sensetive data from a secret:
         1. `MYSQL_ROOT_PASSWORD`
         1. `MYSQL_USER`
         1. `MYSQL_PASSWORD`
