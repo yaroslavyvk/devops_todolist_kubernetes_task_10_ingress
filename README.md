@@ -33,26 +33,15 @@ Create a kubernetes manifest for a pod which will containa ToDo app container:
 
 1. Fork this repository.
 1. Use `kind` to spin up a cluster from a `cluster.yml` configuration file.
+1. Run bootstrap.sh to deploy the app to the cluster and to install ingress controller.
 1. Create a `ingress.yml` file for `Ingress` to manage ingress traffic.
 1. `Ingress` requirement:
     1. `Ingress` file should be located in `./infrastructure/ingress` directory
-    1. `Ingress` should have 3 replicas
-    3. `Ingress` is reading sensetive data from a secret:
-        1. `MYSQL_ROOT_PASSWORD`
-        1. `MYSQL_USER`
-        1. `MYSQL_PASSWORD`
-    4. `StatefulSet` pods should have a `livenessProbe` and `readinessProbe`
-    5. `StatefulSet` pods should have a `requests` and `limits` for `CPU` and `Memory`
-    6. MySQL db should be inited from an `init.sql` that should be propagated as a mounted volume in `/docker-entrypoint-initdb.d`
-    7. `StatefulSet` should have `volumeClaimTemplates`
-    8. `StatefulSet` should have a headless `Service` to expose db pods
-1. `Deployment` requirments:
-    1. Update your application so it could connect to a 0 indexed db pod (mysql-0)
-    2. Application should read db connecion information from a `Secret`:
-        1. `NAME`
-        2. `USER`
-        3. `PASSWORD`
-        4. `HOST`
-1. `bootstrap.sh` should containe all the commands to deploy all the required resources in the cluster
+    2. `Ingress` should have 1 http rule
+    3. `Ingress` should have 1 path based rule
+    4. Rule should route traffic to the app on `/` path
+    5. Rule should capture path and forward it to the app.  `path: {your_regex}`
+1. After ingress deployment you should be able to access the app on `http://localhost` and see the app running.
+1. There should not be any requests failing with 404 status code in browser console.
 1. `README.md` should have instructuions on how to validate the changes
 1. Create PR with your changes and attach it for validation on a platform.
