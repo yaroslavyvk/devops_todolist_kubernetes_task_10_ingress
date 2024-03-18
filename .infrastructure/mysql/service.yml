@@ -14,4 +14,4 @@ spec:
 
 # pod-name.service-name.namespace.svc.cluster.local
 # pod-name.service-name
-# mysql-0.mysql
+# mysql-0.mysql.mysql.svc.cluster.local
